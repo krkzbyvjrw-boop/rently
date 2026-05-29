@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
+/* Tailwind dark: utilities follow data-theme="dark" on <html> */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-card: #ffffff;
+  --border: #e5e7eb;
+  --fg: #111827;
+  --fg-muted: #6b7280;
+  --text-muted: #6b7280;
+  --accent: #111827;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a0a0a;
+  --bg-secondary: #141414;
+  --bg-card: #1a1a1a;
+  --border: #2e2e2e;
+  --fg: #f3f4f6;
+  --fg-muted: #9ca3af;
+  --text-muted: #9ca3af;
+  --accent: #f3f4f6;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.app-nav {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.app-input {
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--fg);
+}
+
+.app-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+.app-section {
+  background: var(--bg);
+  border-color: var(--border);
+}
+
+.app-surface {
+  background: var(--bg-secondary);
+}
+
+.text-fg {
+  color: var(--fg);
+}
+
+.text-muted {
+  color: var(--fg-muted);
 }
